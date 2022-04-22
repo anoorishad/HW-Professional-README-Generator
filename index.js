@@ -39,7 +39,7 @@ inquirer.prompt([
         type: 'list',
         name: 'license',
         message: 'License type:',
-        choices: ['MIT', 'B', 'C','D']
+        choices: ['MIT', 'No License']
     },
     {
         type: 'input',
@@ -53,12 +53,9 @@ inquirer.prompt([
     }
 ]).then(function ({title,description,installation,usage,contribution,tests,license,github,email}) {
     
-    // console.log(title,description,installation,usage,contribution,tests,license,github,email);
 
     let generatedReadme = generateMarkdown({title,description,installation,usage,contribution,tests,license,github,email});
 
-    console.log(generatedReadme);
-
-    fs.writeFileSync('testme.md' , generatedReadme)
+    fs.writeFileSync('./dist/README.md' , generatedReadme)
 
 })
